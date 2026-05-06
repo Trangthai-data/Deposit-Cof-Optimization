@@ -233,3 +233,11 @@ To reduce COF, banks should focus on **increasing CASA**, rather than changing t
 ## ✅ Key Takeaway
 
 The project demonstrates that increasing CASA is significantly more effective than tenor shifting in reducing Cost of Fund and improving funding efficiency.
+
+---
+
+## 👩‍💻 Author
+
+**Trang Thai**
+
+- GitHub: [Trangthai-data](https://github.com/Trangthai-data)
