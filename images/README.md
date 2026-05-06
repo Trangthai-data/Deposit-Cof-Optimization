@@ -1,3 +1,3 @@
 ## 📷 Dashboard Preview
 
-![Dashboard](images.png)
+![Dashboard](DASHBOARD DEPOSIT.png)
