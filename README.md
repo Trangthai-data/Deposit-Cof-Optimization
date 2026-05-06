@@ -63,7 +63,7 @@ SQL View
         ↓
 Power BI Dashboard
 
-⚙️ Technical Highlights
+## ⚙️ Technical Highlights
 SQL
 Stored Procedure aggregation
 CTE & Window Function
@@ -80,7 +80,10 @@ DAX Measures
 What-if Parameters
 Scenario Simulation
 Interactive Dashboard
-📊 Core Metrics
+
+---
+
+## 📊 Core Metrics
 Weighted Rate
 
 Weighted Rate = Σ(Balance × Interest Rate) / Σ(Balance)
@@ -93,7 +96,9 @@ CASA Ratio
 
 CASA Ratio = CASA Balance / Total Deposit Balance
 
-💡 Key Insights
+---
+
+## 💡 Key Insights
 1. CASA is the most important COF driver
 Low CASA increases reliance on high-cost funding
 Increasing CASA reduces funding cost effectively
@@ -104,15 +109,18 @@ Changing tenor mix has minimal effect on COF optimization
 4. Short-term deposits increase funding volatility
 1–6M deposits make COF more sensitive to market rates
 
-🚀 Business Impact
+---
+
+## 🚀 Business Impact
 Scenario	Impact on COF
 CASA +5%	↓ ~0.02%
 Rate +0.3%	↑ ~1.28%
 Tenor Shift	≈ No Significant Impact
-
 👉 CASA is the most effective lever for reducing Cost of Fund.
 
-🧭 Strategic Recommendations
+---
+
+## 🧭 Strategic Recommendations
 Prioritize
 Increase CASA through:
 Digital Banking
@@ -123,7 +131,9 @@ Aggressive short-term rate competition
 Lower Priority
 Tenor shifting strategy due to limited impact
 
-🔍 Future Enhancements
+---
+
+## 🔍 Future Enhancements
 COF decomposition by tenor
 COF ↔ Loan Yield ↔ NIM analysis
 Customer segmentation:
@@ -131,7 +141,10 @@ Retail
 SME
 Corporate
 Deposit inflow/outflow forecasting
-🧩 Technology Stack
+
+---
+
+## 🧩 Technology Stack
 SQL
 Stored Procedure
 CTE
@@ -141,6 +154,8 @@ Data Modeling
 DAX
 Visualization
 What-if Simulation
-✅ Key Takeaway
 
+---
+
+## ✅ Key Takeaway
 Increasing CASA is significantly more effective than tenor shifting in reducing Cost of Fund and improving funding efficiency.
