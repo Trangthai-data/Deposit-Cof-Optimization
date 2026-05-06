@@ -1,1 +1,3 @@
-Dashboard screenshots
+## 📷 Dashboard Preview
+
+![Dashboard](images/overview.png)
