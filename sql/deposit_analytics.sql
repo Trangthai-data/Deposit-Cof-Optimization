@@ -1,5 +1,19 @@
 -- =========================================================
 -- Function: FN_DEPOSIT_SNAPSHOT
+--
+-- Purpose:
+-- Generate consolidated deposit snapshot dataset
+-- at reporting date (as-of date) for ALM analysis
+-- and Cost of Fund optimization
+--
+-- Features:
+-- - CASA, Savings, and Term Deposit consolidation
+-- - Deposit balance snapshot generation
+-- - Customer segmentation
+-- - Currency normalization
+-- - Funding structure analysis
+--
+-- Author: Trang Thai
 -- =========================================================
 
 CREATE FUNCTION FN_TrangTH_tiengui(@NGAY DATE)
@@ -133,6 +147,18 @@ SELECT * FROM dbo.FN_TrangTH_tiengui('2023-01-01')
 
 -- =========================================================
 -- Procedure: SP_CASA_INTEREST_ACCRUAL
+--
+-- Purpose:
+-- Calculate accrued interest for CASA balances
+-- using end-of-day balance snapshots
+--
+-- Features:
+-- - Daily balance tracking
+-- - CASA interest accrual calculation
+-- - Funding cost estimation
+-- - End-of-day balance processing
+--
+-- Author: Trang Thai
 -- =========================================================
 
 CREATE PROC PRC_TRANGTH_LAIKHONGHAN
@@ -266,6 +292,18 @@ EXEC PRC_TRANGTH_LAIKHONGHAN 2024, 1;
 
 -- =========================================================
 -- Procedure: SP_TERM_DEPOSIT_INTEREST
+--
+-- Purpose:
+-- Calculate accrued interest for term deposit
+-- accounts based on deposit tenor and interest rate
+--
+-- Features:
+-- - Term deposit interest calculation
+-- - Deposit tenor processing
+-- - Interest accrual estimation
+-- - Funding cost support for ALM analysis
+--
+-- Author: Trang Thai
 -- =========================================================
 
 CREATE PROCEDURE PRC_TRANGTH_TINHLAITK
