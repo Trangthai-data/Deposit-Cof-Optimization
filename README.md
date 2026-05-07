@@ -2,38 +2,36 @@
 
 ![Dashboard](images/DASHBOARD%20DEPOSIT.png)
 
-This project simulates an **Asset-Liability Management (ALM)** use case in banking, focusing on:
+This project focuses on funding structure analysis and Cost of Fund (COF) optimization through scenario-based simulations and business-driven insights.
 
-> 🎯 **Optimizing Cost of Fund (COF) through CASA and tenor structure**
-
-Unlike traditional reporting dashboards, this system is designed as a **decision-support tool** to evaluate the impact of business scenarios (what-if analysis) on funding costs.
+The system simulates an Asset-Liability Management (ALM) use case in banking, supporting funding analysis and decision-making through interactive dashboard analytics.
 
 ---
 
 ## 🧠 Business Problem
 
-Banks need to answer several critical questions:
+Banks need to answer several critical questions related to funding efficiency and Cost of Fund management:
 
 - Is the current COF optimized?
-- What is the primary driver of COF:
+- What are the key drivers of COF?
   - CASA
   - Interest Rate
   - Tenor Structure
-- If CASA / rate / tenor changes → how will COF react?
+- How will COF react if funding structure changes?
 
-👉 The main focus is **decision simulation**, not just reporting.
+The project focuses on scenario simulation and funding decision support rather than traditional reporting.
 
 ---
 
 ## ⚠️ Challenges
 
-- CASA and Term Deposit data are separated → requiring data unification
+- CASA and Term Deposit data are stored separately, requiring data consolidation
 - COF calculation requires:
-  - Weighted balance
-  - Time trend analysis
-- Difficult to identify the true COF driver:
-  - Rate effect
-  - Mix effect
+  - Weighted balance analysis
+  - Time-series aggregation
+- Difficult to identify the key drivers of COF:
+  - Interest rate effect
+  - Funding mix effect
 
 ---
 
@@ -45,7 +43,7 @@ Banks need to answer several critical questions:
   - Weighted Rate over time
 - Analyze deposit tenor structure
 - Build what-if simulations
-- Identify key COF drivers
+- Identify key drivers of COF
 
 ---
 
@@ -57,133 +55,123 @@ TIENGUI_TIETKIEM
 TIENGUI_COKYHAN
 KHACHHANG
         ↓
-Stored Procedure (aggregation + business logic)
+Stored Procedure (Aggregation + Business Logic)
         ↓
-SQL View (clean & modeling)
+SQL View (Data Cleaning & Modeling)
         ↓
-Power BI Dashboard (visual & simulation)
+Power BI Dashboard (Visualization & Simulation)
 ```
 
 ---
 
-## ⚙️ Technical
+## ⚙️ Technical Highlights
 
-### SQL Development
+### SQL Server
 
-- Built Stored Procedures for:
+- Developed Stored Procedures for:
   - Balance aggregation over time
-  - Regional & tenor allocation
-  - Ratio calculations (%)
+  - Regional and tenor allocation
+  - Ratio calculations
+
+---
 
 ### SQL Techniques
 
 - CTE
-- Window Function (`ROW_NUMBER`)
+- Window Functions
+- Aggregation
+- Conditional Mapping
+
+---
 
 ### Data Modeling
 
-- Star Schema:
-  - Date
-  - Region
-  - Tenor
-  - Fact Table
+#### Star Schema
 
-### Power BI Features
+- Dim Date
+- Dim Region
+- Dim Tenor
+- Fact Deposit
 
-- DAX What-if Parameters for:
-  - CASA shift
-  - Rate shift
-  - Tenor shift
+---
+
+### Power BI Development
+
+- DAX Measures
+- What-if Parameters
+- Interactive Dashboard
+- Scenario Simulation
+
+---
 
 ### Assumptions
 
-- Early withdrawal behavior is not included in the dataset
-- COF calculations are approximate and may not fully reflect real customer withdrawal behavior
+- Early withdrawal behavior is excluded from the dataset
+- COF calculations are based on reporting snapshots and simplified funding assumptions
 
 ---
 
 ## 📊 Core Metrics
 
-### 1. Weighted Rate
+### Weighted Rate
 
-```text
+```sql
 Weighted Rate = Σ(Balance × Interest Rate) / Σ(Balance)
 ```
 
 ---
 
-### 2. Cost of Fund (COF)
+### Cost of Fund (COF)
 
-```text
+```sql
 COF = Interest Expense / Average Funding Balance
 ```
 
-👉 COF is essentially the weighted rate from a funding cost perspective.
+COF represents the weighted funding cost across the deposit portfolio.
 
 ---
 
-### 3. CASA Ratio
+### CASA Ratio
 
-```text
+```sql
 CASA Ratio = CASA Balance / Total Deposit Balance
 ```
 
 ---
 
-## 💡 Insights
+## 💡 Key Insights
 
-### 1. Low CASA leads to higher COF
+### 1. Low CASA ratio contributed to higher COF
 
-👉 Lower non-term deposits increase reliance on higher-interest funding sources, raising funding costs.
-
----
-
-### 2. Short-term deposits (1–6M) dominate the portfolio
-
-👉 Changes in market rates significantly impact funding costs.
+Lower non-term deposits increased reliance on higher-interest funding sources.
 
 ---
 
-### 3. Tenor shifting does not materially reduce COF
+### 2. Short-term deposits (1–6M) dominated the portfolio
 
-👉 Changing tenor structure creates minimal impact on COF.
-
----
-
-### 4. COF is highly sensitive to market interest rates
-
-👉 When interest rates increase, COF rises significantly.
+Changes in market interest rates significantly affected funding cost.
 
 ---
 
-### 5. What-if simulation shows:
+### 3. Tenor shifting showed limited impact on COF
 
-- Increasing CASA → reduces COF
-- Increasing interest rates → sharply increases COF
-- Tenor shifting → minimal impact
-
-🔥 Conclusion:
-
-To reduce COF, banks should focus on **increasing CASA**, rather than changing tenor structure.
+Compared to CASA growth and interest rate changes, tenor adjustment created smaller COF improvement.
 
 ---
 
-## 🧭 Strategic Recommendations
+### 4. COF was highly sensitive to market interest rate changes
 
-### Prioritize
+Higher market rates increased overall funding cost exposure.
 
-- Increase CASA through:
-  - Digital Banking
-  - Payroll Ecosystem
-  - SME Cashflow Solutions
+---
 
-### Avoid
+### 5. What-if simulation results showed:
 
-- Aggressive short-term rate competition
+- Increasing CASA reduced COF
+- Increasing interest rates significantly increased COF
+- Tenor shifting created limited COF impact
 
-### Lower Priority
-
-- Tenor shifting strategy due to limited impact
+The analysis indicated that CASA growth was more effective for COF optimization than tenor adjustment strategies.
 
 ---
 
@@ -193,17 +181,16 @@ To reduce COF, banks should focus on **increasing CASA**, rather than changing t
 |---|---|
 | CASA +5% | ↓ COF ~0.02% |
 | Interest Rate +0.3% | ↑ COF ~1.28% |
-| Tenor Shift | ≈ No Significant Impact |
+| Tenor Shift | Minimal Impact |
 
-👉 CASA is the most effective lever for optimizing Cost of Fund, while tenor shifting creates limited value.
+The simulation improved visibility into funding structure sensitivity and supported funding analysis for ALM monitoring.
 
 ---
 
 ## 🔍 Future Enhancements
 
 - COF decomposition by tenor
-- Connect:
-  - COF ↔ Loan Yield → NIM
+- Connect COF with Loan Yield for NIM analysis
 - Customer segmentation:
   - Retail
   - SME
@@ -214,7 +201,7 @@ To reduce COF, banks should focus on **increasing CASA**, rather than changing t
 
 ## 🧩 Technology Stack
 
-### SQL
+### SQL Server
 
 - Stored Procedure
 - CTE
@@ -224,15 +211,15 @@ To reduce COF, banks should focus on **increasing CASA**, rather than changing t
 ### Power BI
 
 - Data Modeling
-- Visualization
 - DAX
 - What-if Simulation
+- Visualization
 
 ---
 
 ## ✅ Key Takeaway
 
-The project demonstrates that increasing CASA is significantly more effective than tenor shifting in reducing Cost of Fund and improving funding efficiency.
+The project demonstrates how scenario-based simulations can support funding structure analysis and COF monitoring in banking through SQL-based data processing and Power BI analytics.
 
 ---
 
@@ -240,4 +227,4 @@ The project demonstrates that increasing CASA is significantly more effective th
 
 **Trang Thai**
 
-- GitHub: [Trangthai-data](https://github.com/Trangthai-data)
+GitHub: https://github.com/Trangthai-data
